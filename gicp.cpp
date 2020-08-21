@@ -32,10 +32,10 @@ int main (int argc, char** argv)
         return (-1);
     }
     
-
+//ApproximateVoxelGrid assembles a local 3D grid over a given PointCloud, and downsamples + filters the data. 
           
            pcl::ApproximateVoxelGrid<pcl::PointXYZ> approximate_voxel_filter;
-           approximate_voxel_filter.setLeafSize (0.2, 0.2, 0.2);
+           approximate_voxel_filter.setLeafSize (0.2, 0.2, 0.2); // size of voxels (x,y,z)
            approximate_voxel_filter.setInputCloud (cloud_in);
            approximate_voxel_filter.filter (*cloud_in);
 
@@ -44,19 +44,21 @@ int main (int argc, char** argv)
            approximate_voxel_filter2.setInputCloud (cloud_out);
            approximate_voxel_filter2.filter (*cloud_out);
 
-    int iteration = atoi(argv[3]);
+    int iteration = atoi(argv[3]); //gicp iterations
     pcl::GeneralizedIterativeClosestPoint<pcl::PointXYZ, pcl::PointXYZ> icp;
-    icp.setInputSource(cloud_in);
-    icp.setInputTarget(cloud_out);
-    icp.setMaximumIterations(iteration);
-    icp.align(*cloud_icp);
+    icp.setInputSource(cloud_in); // rotation cloud
+    icp.setInputTarget(cloud_out); // reference cloud
+    icp.setMaximumIterations(iteration); 
+    icp.align(*cloud_icp); //cloud with corrected pose
 
     Eigen::Matrix4f rotation_matrix = icp.getFinalTransformation();
     double rms = computeCloudRMSE(cloud_in, cloud_out, std::numeric_limits<double>::max());
-    double elem1 = rotation_matrix(0, 0);
-    double elem2 = rotation_matrix(1, 1);
-    double elem3 = rotation_matrix(2, 2);
-    double angle123 = (elem1 + elem2 + elem3 - 1) / 2.0;
+        double elem1, elem2, elem3, angle123,rot_angle;
+    //Calculation of rotation after alignment    
+        double elem1 = rotation_matrix(0, 0); // r_11
+        double elem2 = rotation_matrix(1, 1); // r_22
+        double elem3 = rotation_matrix(2, 2); // r_33
+        double angle123 = (elem1 + elem2 + elem3 - 1) / 2.0; // Axis–angle representation==(sum of the main diagonal - 1)/2
     double rot_angle = (acos(angle123) * 180.0) / PI;
     
     std::cout << rotation_matrix << std::endl;
