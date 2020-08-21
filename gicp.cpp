@@ -53,7 +53,7 @@ int main (int argc, char** argv)
 
     Eigen::Matrix4f rotation_matrix = icp.getFinalTransformation();
     double rms = computeCloudRMSE(cloud_in, cloud_out, std::numeric_limits<double>::max());
-        double elem1, elem2, elem3, angle123,rot_angle;
+    double elem1, elem2, elem3, angle123,rot_angle;
     //Calculation of rotation after alignment    
         double elem1 = rotation_matrix(0, 0); // r_11
         double elem2 = rotation_matrix(1, 1); // r_22
@@ -83,9 +83,10 @@ int main (int argc, char** argv)
     viewer1->addPointCloud(cloud_out, "cloud_out");
     viewer1->addPointCloud(cloud_in, "cloud_in");
 
-    //Configurando cloud_out
+    //// Configuring cloud_in
     viewer1->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_COLOR,0,0,255,"cloud_in");
     viewer1->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, sizePoints, "cloud_in");
+    // Configuring cloud_out
     viewer1->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_COLOR,0, 255, 0,"cloud_out");
     viewer1->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, sizePoints, "cloud_out");
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,7 +101,6 @@ int main (int argc, char** argv)
     viewer2->addPointCloud(cloud_out, "cloud_out");
     viewer2->addPointCloud(cloud_icp, "cloud_regist");
 
-    //Configurando cloud_out
     viewer2->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_COLOR,0,0,255,"cloud_regist");
     viewer2->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, sizePoints, "cloud_regist");
     viewer2->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_COLOR,0, 255, 0,"cloud_out");
