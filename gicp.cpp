@@ -72,12 +72,12 @@ int main (int argc, char** argv)
     //Visualization
     //---------------------------
 
-    int sizePoints = 2;
+    int sizePoints = 2; // size of points
 
 
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer1 (new pcl::visualization::PCLVisualizer ("REGISTRO"));
 
-    // Adicionando ambas as nuvens de pontos
+    // Adding both point clouds
     viewer1->setBackgroundColor(255,255,255);
 
     viewer1->addPointCloud(cloud_out, "cloud_out");
@@ -90,10 +90,11 @@ int main (int argc, char** argv)
     viewer1->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, sizePoints, "cloud_out");
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // Initializing point cloud visualizer
 
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer2 (new pcl::visualization::PCLVisualizer ("REGISTRO"));
 
-    // Adicionando ambas as nuvens de pontos
+    // Coloring and visualizing target cloud (green)/ source (blue).
     viewer2->setBackgroundColor(255,255,255);
 
     viewer2->addPointCloud(cloud_out, "cloud_out");
@@ -105,7 +106,8 @@ int main (int argc, char** argv)
     viewer2->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_COLOR,0, 255, 0,"cloud_out");
     viewer2->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, sizePoints, "cloud_out");
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+ // Starting visualizer
+    // viewer_final->addCoordinateSystem (1.0, "global");
     while(!viewer2->wasStopped())
     {
         viewer2->spinOnce();
