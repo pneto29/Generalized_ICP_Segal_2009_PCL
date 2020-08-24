@@ -21,7 +21,7 @@ cmake ..
 * Run make
 make
 * When the program has been built, run: 
-./icp_p2pt argv[1] argv[2] argv[3]
+./gicp argv[1] argv[2] argv[3]
 
 ## Parameters ##
 * argv[1]: target cloud
