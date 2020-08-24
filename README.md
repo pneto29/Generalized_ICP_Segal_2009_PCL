@@ -1,1 +1,31 @@
-# GeneralizedIterativeClosestPoint is an ICP variant that implements the generalized iterative closest point algorithm as described by Alex Segal et al. in http://www.stanford.edu/~avsegal/resources/papers/Generalized_ICP.pdf The approach is based on using anistropic cost functions to optimize the alignment after closest point assignments have been made. The original code uses GSL and ANN while in ours we use an eigen mapped BFGS and FLANN. 
+# Generalized-icp #
+
+This repository contains an implementation of the Iterative closest point. 
+
+## Dependencies ##
+
+The dependencies are header-only and are all included in the ext directory. As a consequence, there is nothing to do.
+
+* PCL (Point cloud library) - 1.7 version
+* Linux Ubuntu 16.04 or 18.04
+
+## Usage ##
+
+* Create a folder named build (for example)
+mkdir build
+* Enter folder
+cd build/
+* Run "CmakeLists.txt" which is a path before build
+cmake ..
+* Run make
+make
+* When the program has been built, run: 
+./icp_p2pt argv[1] argv[2] argv[3]
+
+## Parameters ##
+* argv[1]: target cloud
+* argv[2]: source cloud
+* argv[3]: Setting max number of registration iterations
+## Reference ##
+
+Segal, Aleksandr, Dirk Haehnel, and Sebastian Thrun. "Generalized-icp." Robotics: science and systems. Vol. 2. No. 4. 2009.
