@@ -1,3 +1,14 @@
+/*********************************************************************************************************************
+Main Function for point cloud registration with Generalized ICP
+Last modified: August 24, 2020
+
+Reference:
+Segal, Aleksandr, Dirk Haehnel, and Sebastian Thrun... 
+"Generalized-icp." Robotics: science and systems. Vol. 2. No. 4. 2009.
+
+Responsible for implementation: Polycarpo Souza Neto
+Documentation: http://docs.ros.org/hydro/api/pcl/html/classpcl_1_1GeneralizedIterativeClosestPoint.html
+**********************************************************************************************************************/
 #include "validationlib.h"
 #include <pcl/filters/statistical_outlier_removal.h>
 #include <pcl/filters/voxel_grid.h>
