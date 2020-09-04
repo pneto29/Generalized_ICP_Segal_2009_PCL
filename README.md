@@ -27,6 +27,8 @@ make
 * argv[1]: target cloud
 * argv[2]: source cloud
 * argv[3]: Setting max number of registration iterations
+* argv[4]: cloud final
+
 ## Reference ##
 
 Segal, Aleksandr, Dirk Haehnel, and Sebastian Thrun. "Generalized-icp." Robotics: science and systems. Vol. 2. No. 4. 2009.
