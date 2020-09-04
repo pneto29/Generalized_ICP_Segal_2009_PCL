@@ -6,7 +6,7 @@ Reference:
 Segal, Aleksandr, Dirk Haehnel, and Sebastian Thrun... 
 "Generalized-icp." Robotics: science and systems. Vol. 2. No. 4. 2009.
 
-Responsible for implementation: ***
+Responsible for implementation: the authors
 Documentation: http://docs.ros.org/hydro/api/pcl/html/classpcl_1_1GeneralizedIterativeClosestPoint.html
 **********************************************************************************************************************/
 #include "validationlib.h"
@@ -64,7 +64,7 @@ int main (int argc, char** argv)
 
     Eigen::Matrix4f rotation_matrix = icp.getFinalTransformation();
     double rms = computeCloudRMSE(cloud_in, cloud_out, std::numeric_limits<double>::max());
-    double elem1, elem2, elem3, angle123,rot_angle;
+    //double elem1, elem2, elem3, angle123,rot_angle;
     //Calculation of rotation after alignment    
         double elem1 = rotation_matrix(0, 0); // r_11
         double elem2 = rotation_matrix(1, 1); // r_22
@@ -77,6 +77,7 @@ int main (int argc, char** argv)
   //  std::cout << "ANGL: " << rot_angle << std::endl;
     std::cout << "TIME: " << (clock() - tempo) / (double)CLOCKS_PER_SEC << std::endl;
     
+      pcl::io::savePCDFileASCII (argv[4], *cloud_icp);
  //   return 0;
 
     //---------------------------
