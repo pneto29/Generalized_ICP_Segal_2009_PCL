@@ -6,7 +6,7 @@ Reference:
 Segal, Aleksandr, Dirk Haehnel, and Sebastian Thrun... 
 "Generalized-icp." Robotics: science and systems. Vol. 2. No. 4. 2009.
 
-Responsible for implementation: Polycarpo Souza Neto
+Responsible for implementation: ***
 Documentation: http://docs.ros.org/hydro/api/pcl/html/classpcl_1_1GeneralizedIterativeClosestPoint.html
 **********************************************************************************************************************/
 #include "validationlib.h"
