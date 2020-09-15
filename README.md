@@ -26,7 +26,7 @@ make
 ## Parameters ##
 * argv[1]: target cloud
 * argv[2]: source cloud
-* argv[3]: Setting max number of registration iterations
+* argv[3]: Setting max number of registration iterations (30 by default)
 * argv[4]: cloud final
 
 ## Reference ##
