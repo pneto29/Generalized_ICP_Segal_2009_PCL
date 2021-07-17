@@ -123,7 +123,7 @@ int main (int argc, char** argv)
     while(!viewer2->wasStopped())
     {
         viewer2->spinOnce();
-        boost::this_thread::sleep (boost::posix_time::microseconds(100000));
+      //  boost::this_thread::sleep (boost::posix_time::microseconds(100000));
     }
     system("pause");
 
